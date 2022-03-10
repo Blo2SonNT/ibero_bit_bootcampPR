@@ -1,0 +1,105 @@
+:root {
+    --color-azul: #1877f2;
+    --color-verde: #42b72a;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-azul);
+}
+
+.flex-facebook {
+    display: flex;
+    padding-top: 15vh;
+}
+
+.img-logo {
+    height: 106px;
+    margin: -28px;
+}
+
+.caja1 img,
+.caja1 h2 {
+    padding: 0 34% 0 10%;
+}
+
+.caja2 {
+    margin-left: -30%;
+    min-width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+    width: 330px;
+}
+
+.form-login {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-login input {
+    height: 42px;
+    padding-left: 10px;
+    width: 330px;
+    margin: 8px 0;
+}
+
+.btn-login {
+    width: 330px;
+    height: 42px;
+    background-color: #1877f2;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+}
+
+.link-forgot-pass {
+    width: 100%;
+    text-align: center;
+}
+
+.btn-nueva-cuenta {
+    background-color: var(--color-verde);
+    border: none;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 48px;
+    padding: 0 16px;
+    font-weight: bold;
+    transition: all .5s;
+    ;
+}
+
+.btn-nueva-cuenta:hover {
+    background-color: #a45020;
+}
+
+.btn-nueva-cuenta:disabled {
+    background-color: #653cb1;
+}
+
+input:focus {
+    border-color: transparent;
+}
+
+.caja2 {
+    border: solid 3px #000;
+}
+
+@media (min-width: 768px) {
+    .caja2 {
+        background: #000;
+        /* display: none; */
+    }
+    input {
+        border: solid 3px var(--color-azul);
+    }
+}

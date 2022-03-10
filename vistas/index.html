@@ -13,22 +13,30 @@
 <body>
     <style>
         img {
-            min-width: 400px;
-            width: 400px;
-            height: 230px;
             object-fit: cover;
+        }
+        
+        @media (min-width: 768px) and (max-width: 992px) {
+            .flex-fix {
+                display: flex;
+                flex-direction: column;
+            }
+            .flex-fix a {
+                margin: 2px 0;
+                width: 100% !important;
+            }
         }
     </style>
     <div class="container my-5">
         <h1 class="my-5">Bootcamp Ibero - BIT Presencial 2022-1</h1>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
-                <div class="card">
-                    <img src="https://codigofacilito.com/system/articles/covers/000/000/043/original/html.jpg?1444827874" class="card-img-top">
+                <div class="card h-100">
+                    <img src="img/html.jpg" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-center">HTML</h5>
                         <p class="card-text text-center">Correspondiente a: clase1</p>
-                        <div class="d-flex">
+                        <div class="d-flex flex-fix">
                             <a href="html.html" class="btn btn-dark w-50 mx-2">Vista</a>
                             <a href="https://github.com/Blo2SonNT/ibero_bit_bootcampPR/tree/master/clase1" class="btn btn-dark w-50 mx-2">Repositorio</a>
                         </div>
@@ -36,12 +44,12 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card">
-                    <img src="https://diarioinforme.com/wp-content/uploads/2021/05/e713ed70-1.png" class="card-img-top">
+                <div class="card h-100">
+                    <img src="img/git.jpg" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-center">GIT</h5>
                         <p class="card-text text-center">Correspondiente a: clase1</p>
-                        <div class="d-flex">
+                        <div class="d-flex flex-fix">
                             <a href="git.html" class="btn btn-dark w-50 mx-2">Vista</a>
                             <a href="https://github.com/Blo2SonNT/ibero_bit_bootcampPR/tree/master/clase1" class="btn btn-dark w-50 mx-2">Repositorio</a>
                         </div>
@@ -49,12 +57,12 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card">
-                    <img src="https://jesusfernandeztoledo.com/wp-content/uploads/2021/01/css.png" class="card-img-top">
+                <div class="card h-100">
+                    <img src="img/css.jpg" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title fw-bold text-center">CSS</h5>
                         <p class="card-text text-center">Correspondiente a: clase2, clase3</p>
-                        <div class="d-flex">
+                        <div class="d-flex flex-fix">
                             <a href="css.html" class="btn btn-dark w-50 mx-2">Vista</a>
                             <a href="https://github.com/Blo2SonNT/ibero_bit_bootcampPR" class="btn btn-dark w-50 mx-2">Repositorio</a>
                         </div>

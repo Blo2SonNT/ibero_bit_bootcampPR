@@ -1,0 +1,15 @@
+.cuadro {
+    width: 200px;
+    height: 200px;
+    background-color: #ff0000;
+    animation: movimiento 5s;
+}
+
+@keyframes movimiento {
+    0% {
+        margin-left: 100px;
+    }
+    100% {
+        transform: rotate(90);
+    }
+}

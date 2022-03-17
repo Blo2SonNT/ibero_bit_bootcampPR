@@ -1,0 +1,9 @@
+.icono_logo {
+    width: 40px;
+}
+
+@media (max-width: 768px) {
+    .main-container-blog {
+        flex-direction: column-reverse;
+    }
+}

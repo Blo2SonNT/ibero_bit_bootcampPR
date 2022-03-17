@@ -1,0 +1,11 @@
+:root {
+    --color-morado: #a152e2;
+}
+
+.video-size {
+    width: 10%;
+}
+
+.bg-morado {
+    background-color: var(--color-morado)
+}

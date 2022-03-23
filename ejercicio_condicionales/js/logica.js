@@ -18,3 +18,38 @@ function listas(select_html, max_numero) {
 
 listas("hora", "23")
 listas("minuto", "59")
+
+function condicionales() {
+    var dia_semana = document.querySelector("#dia_semana").value
+    var hora_venta = document.querySelector("#hora").value
+    var documento = document.querySelector("#nro_cedula").value
+    var edad_venta = document.querySelector("#edad").value
+    console.log(dia_semana + " " + hora_venta + " " + documento + " " + edad_venta)
+
+    var descuento = 12
+
+    if (dia_semana == "lunes" || dia_semana == "martes" || dia_semana == "miercoles" || dia_semana == "jueves" || dia_semana == "viernes") {
+        if (hora_venta >= 7 && hora_venta <= 20) {
+
+            if (edad_venta >= 18 && edad_venta <= 60) {
+                if (dia_semana == "lunes") {
+                    if (documento == 1 || documento == 2) {
+                        alert(`Tiene derecho a un descuento del ${descuento}%`)
+                    }
+                } else if (dia_semana == "martes") {
+
+                } else if (dia_semana == "miercoles") {
+
+                } else if (dia_semana == "jueves") {
+
+                } else if (dia_semana == "viernes") {
+
+                }
+            } else if (edad_venta >= 61) {
+
+            }
+
+        }
+
+    }
+}

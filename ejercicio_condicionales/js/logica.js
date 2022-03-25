@@ -32,6 +32,37 @@ function condicionales() {
         if (hora_venta >= 7 && hora_venta <= 20) {
 
             if (edad_venta >= 18 && edad_venta <= 60) {
+
+                switch (dia_semana) {
+                    case "lunes":
+                        if (documento == 1 || documento == 2) {
+                            alert(`Tiene derecho a un descuento del ${descuento}%`)
+                        }
+                        break;
+                    case "martes":
+                        if (documento == 3 || documento == 4) {
+                            alert(`Tiene derecho a un descuento del ${descuento}%`)
+                        }
+                        break;
+                    case "miercoles":
+                        if (documento == 5 || documento == 6) {
+                            alert(`Tiene derecho a un descuento del ${descuento}%`)
+                        }
+                        break;
+                    case "jueves":
+                        if (documento == 7 || documento == 8) {
+                            alert(`Tiene derecho a un descuento del ${descuento}%`)
+                        }
+                        break;
+                    case "viernes":
+                        if (documento == 9 || documento == 0) {
+                            alert(`Tiene derecho a un descuento del ${descuento}%`)
+                        }
+                        break;
+
+
+                }
+
                 if (dia_semana == "lunes") {
                     if (documento == 1 || documento == 2) {
                         alert(`Tiene derecho a un descuento del ${descuento}%`)

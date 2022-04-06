@@ -33,3 +33,16 @@ let lista_html = document.querySelector("#lista")
 nombres.forEach((elemento_gatito, posicion, mi_array) => {
     lista_html.innerHTML += `<li class="list-group-item">${posicion} - ${elemento_gatito}</li> ${mi_array}`
 });
+
+
+function guardar_local(valor) {
+
+    localStorage.setItem("valor_usuario", valor)
+    document.querySelector("#local").innerHTML = localStorage.getItem("valor_usuario")
+}
+
+if (localStorage.getItem("valor_usuario") == null) {
+    alert("no existe")
+} else {
+    console.warn("Si existe")
+}

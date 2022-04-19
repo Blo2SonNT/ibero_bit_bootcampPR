@@ -21,9 +21,7 @@ consumo.then((res) => res.json())
 
 
         // console.log(personaje)
+    }).catch((error) => {
+        alert("No se puede conectar con la API")
+        console.log(error)
     })
-
-// .catch((error) => {
-//     alert("No se puede conectar con la API")
-//     console.log(error)
-// })

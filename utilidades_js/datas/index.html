@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+    <h1 data-subrayado="true" data-color="71C145" data-captura="">Hola mundo</h1>
+    <h1 data-subrayado="false" data-color="7945C1" data-captura="">Hola mundo</h1>
+    <h1 data-subrayado="true" data-color="EAD171" data-captura="">Hola mundo</h1>
+    <h1 data-subrayado="true" data-color="#FF1414" data-captura="">Hola mundo</h1>
+    <h1 data-subrayado="true">Hola mundo</h1>
+
+    <script src="datas.js"></script>
+
+    <script>
+        let misTitulos = document.querySelectorAll("[data-captura]")
+        console.log(misTitulos)
+        misTitulos.forEach(titulo => {
+            titulo.addEventListener("click", () => {
+                let sub = titulo.dataset.subrayado
+                if (sub === "true") {
+                    let colorTexto = titulo.dataset.color
+                    titulo.classList.add("subrayado")
+                    titulo.setAttribute("style", `color: #${colorTexto}`)
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

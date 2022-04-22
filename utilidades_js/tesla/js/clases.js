@@ -13,7 +13,7 @@ class Carro {
 
     crear_pagina() {
         return `
-        <div style="background: url(${this.imagen}); height: 100vh; width: 100%;">
+        <div class="vista_modelo" data-imagen="${this.imagen}">
             <h1>${this.nombre_modelo}</h1>
             <p>Caballos de fuerza: ${this.caballos}</p>
             <p>Color: ${this.color}</p>

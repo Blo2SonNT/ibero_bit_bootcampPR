@@ -104,8 +104,8 @@ function consumo(endpointApi) {
 function listener_paginacion() {
     let botones_numerados = document.querySelectorAll("[data-url-api-rick]")
     console.log(botones_numerados)
-    let url_api = ''
     botones_numerados.forEach(botoncito => {
+        let url_api = ''
         url_api = botoncito.dataset.urlApiRick
         url_api = url_api.slice(32)
         console.log(url_api)

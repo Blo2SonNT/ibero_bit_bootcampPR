@@ -65,7 +65,7 @@ function consumo(endpointApi) {
                         </div>
                         `
             });
-
+ 
             let html_vista = document.querySelector("#vista")
             html_vista.innerHTML = vista_html
 

@@ -65,7 +65,7 @@ function consumo(endpointApi) {
                         </div>
                         `
             });
- 
+
             let html_vista = document.querySelector("#vista")
             html_vista.innerHTML = vista_html
 
@@ -83,11 +83,11 @@ function consumo(endpointApi) {
 
             //https://rickandmortyapi.com/api/character?page=26
 
-            let paginacion_final = "https://rickandmortyapi.com/api/character?page=26".slice("https://rickandmortyapi.com/api/")
-                // let paginacion_final = "https://rickandmortyapi.com/api/character?page=26".slice(32)
+            // let paginacion_final = "https://rickandmortyapi.com/api/character?page=26".slice("https://rickandmortyapi.com/api/")
+            // let paginacion_final = "https://rickandmortyapi.com/api/character?page=26".slice(32)
 
-            console.log(paginacion_final.length)
-
+            // console.log(paginacion_final.length)
+            html_paginacion.innerHTML = ""
             html_paginacion.innerHTML += `
                 <div class="d-flex justify-content-between align-items-center">
                     <button class="btn btn-${color_btn} ${disabled_clase_prev}" data-url="${data_api.info.prev}">Anterior</button>
@@ -98,6 +98,7 @@ function consumo(endpointApi) {
                 </div>
             `
         })
+
 }
 
 

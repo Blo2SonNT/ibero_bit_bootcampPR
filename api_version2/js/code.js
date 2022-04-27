@@ -110,7 +110,16 @@ function completa_modal_normal(array_episodios) {
 
 function buscador() {
     let buscador = document.querySelector("#buscador_personaje").value
-    let url_api = "https://rickandmortyapi.com/api/character/?name=" + buscador;
+    let solo_numeros = /^[0-9]+$/
+    let url_api = ''
+    let busca_x_id = false;
+    if (solo_numeros.test(buscador)) {
+        url_api = "https://rickandmortyapi.com/api/character/" + buscador;
+        busca_x_id = true
+    } else {
+        url_api = "https://rickandmortyapi.com/api/character/?name=" + buscador;
+    }
+    console.log(url_api)
     let api = fetch(url_api);
 
 
@@ -118,30 +127,62 @@ function buscador() {
         .then(data => {
             let div_contenido = document.querySelector("#contenido")
             div_contenido.innerHTML = ''
-            let data_results = data.results
+            let data_results = (busca_x_id) ? data : data.results
             console.log(data_results)
-            data_results.forEach(personaje => {
+            if (busca_x_id == false) {
+                data_results.forEach(personaje => {
+                    div_contenido.innerHTML += `
+                <div class="col">
+                    <div class="card">
+                    <img src="${personaje.image}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${personaje.name}</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item">${traducir_palabra(personaje.status, "estado")}</li>
+                            <li class="list-group-item">${traducir_palabra(personaje.gender, "genero")}</li>
+                            <li class="list-group-item">${personaje.species}</li>
+                        </ul>
+                        <button type="button" class="btn btn-dark" onclick="modal_data_personaje('${personaje.episode}')">
+                            Episodios Modal JS
+                        </button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="completa_modal_normal('${personaje.episode}')" data-bs-target="#modalNormalEpisodios">
+                            Episodios Modal Normal
+                        </button>
+                    </div>
+                    </div>
+                </div>
+                `
+                });
+            } else {
                 div_contenido.innerHTML += `
-            <div class="col">
-                <div class="card">
-                <img src="${personaje.image}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">${personaje.name}</h5>
-                    <ul class="list-group">
-                        <li class="list-group-item">${traducir_palabra(personaje.status, "estado")}</li>
-                        <li class="list-group-item">${traducir_palabra(personaje.gender, "genero")}</li>
-                        <li class="list-group-item">${personaje.species}</li>
-                    </ul>
-                    <button type="button" class="btn btn-dark" onclick="modal_data_personaje('${personaje.episode}')">
-                        Episodios Modal JS
-                    </button>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="completa_modal_normal('${personaje.episode}')" data-bs-target="#modalNormalEpisodios">
-                        Episodios Modal Normal
-                    </button>
+                <div class="col">
+                    <div class="card">
+                    <img src="${data.image}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${data.name}</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item">${traducir_palabra(data.status, "estado")}</li>
+                            <li class="list-group-item">${traducir_palabra(data.gender, "genero")}</li>
+                            <li class="list-group-item">${data.species}</li>
+                        </ul>
+                        <button type="button" class="btn btn-dark" onclick="modal_data_personaje('${data.episode}')">
+                            Episodios Modal JS
+                        </button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" onclick="completa_modal_normal('${data.episode}')" data-bs-target="#modalNormalEpisodios">
+                            Episodios Modal Normal
+                        </button>
+                    </div>
+                    </div>
                 </div>
-                </div>
-            </div>
-            `
-            });
+                `
+            }
         })
 }
+
+
+
+
+
+// https://rickandmortyapi.com/api/character/?name=rick&status=alive
+
+// https://rickandmortyapi.com/api/character/2

@@ -1,3 +1,7 @@
+//keypress
+let input_busqueda = document.querySelector("#buscador_personaje")
+input_busqueda.addEventListener("keypress", buscador)
+
 let url_api = "https://rickandmortyapi.com/api/character";
 let api = fetch(url_api);
 
@@ -108,30 +112,32 @@ function completa_modal_normal(array_episodios) {
 }
 
 
-function buscador() {
-    let buscador = document.querySelector("#buscador_personaje").value
-    let solo_numeros = /^[0-9]+$/
-    let url_api = ''
-    let busca_x_id = false;
-    if (solo_numeros.test(buscador)) {
-        url_api = "https://rickandmortyapi.com/api/character/" + buscador;
-        busca_x_id = true
-    } else {
-        url_api = "https://rickandmortyapi.com/api/character/?name=" + buscador;
-    }
-    console.log(url_api)
-    let api = fetch(url_api);
+function buscador(evento_tecla) {
+    console.log(evento_tecla.keyCode)
+    if (evento_tecla.keyCode == 13) {
+        let buscador = document.querySelector("#buscador_personaje").value
+        let solo_numeros = /^[0-9]+$/
+        let url_api = ''
+        let busca_x_id = false;
+        if (solo_numeros.test(buscador)) {
+            url_api = "https://rickandmortyapi.com/api/character/" + buscador;
+            busca_x_id = true
+        } else {
+            url_api = "https://rickandmortyapi.com/api/character/?name=" + buscador;
+        }
+        console.log(url_api)
+        let api = fetch(url_api);
 
 
-    api.then(res => res.json())
-        .then(data => {
-            let div_contenido = document.querySelector("#contenido")
-            div_contenido.innerHTML = ''
-            let data_results = (busca_x_id) ? data : data.results
-            console.log(data_results)
-            if (busca_x_id == false) {
-                data_results.forEach(personaje => {
-                    div_contenido.innerHTML += `
+        api.then(res => res.json())
+            .then(data => {
+                let div_contenido = document.querySelector("#contenido")
+                div_contenido.innerHTML = ''
+                let data_results = (busca_x_id) ? data : data.results
+                console.log(data_results)
+                if (busca_x_id == false) {
+                    data_results.forEach(personaje => {
+                        div_contenido.innerHTML += `
                 <div class="col">
                     <div class="card">
                     <img src="${personaje.image}" class="card-img-top" alt="...">
@@ -152,9 +158,9 @@ function buscador() {
                     </div>
                 </div>
                 `
-                });
-            } else {
-                div_contenido.innerHTML += `
+                    });
+                } else {
+                    div_contenido.innerHTML += `
                 <div class="col">
                     <div class="card">
                     <img src="${data.image}" class="card-img-top" alt="...">
@@ -175,8 +181,9 @@ function buscador() {
                     </div>
                 </div>
                 `
-            }
-        })
+                }
+            })
+    }
 }
 
 

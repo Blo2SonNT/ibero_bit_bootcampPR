@@ -185,11 +185,3 @@ function buscador(evento_tecla) {
             })
     }
 }
-
-
-
-
-
-// https://rickandmortyapi.com/api/character/?name=rick&status=alive
-
-// https://rickandmortyapi.com/api/character/2

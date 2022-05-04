@@ -1,9 +1,9 @@
 class Login {
-    usuario = ''
+    correo = ''
     contrasena = ''
 
-    constructor(usuario, contrasena) {
-        this.usuario = usuario
+    constructor(correo, contrasena) {
+        this.correo = correo
         this.contrasena = contrasena
     }
 
@@ -13,7 +13,7 @@ class Login {
         let existe = false
         let posicion = 0
         for (const dataPersona of BD) {
-            if (dataPersona.correo == this.usuario) {
+            if (dataPersona.correo == this.correo) {
                 existe = true
             }
             if (!existe) {
@@ -47,13 +47,9 @@ class Login {
             window.location.href = "index.html";
         }
 
-        this.lolo()
         return login
     }
 
-    lolo() {
-        console.log("wololo")
-    }
 }
 
 

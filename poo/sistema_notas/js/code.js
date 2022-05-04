@@ -1,24 +1,23 @@
-// let BD = [
-//     {
-//         nombre: "Hugo",
-//         apellido: "Mendez",
-//         edad: 85,
-//         correo: "hugo@correo.com",
-//         pass: "123456"
-//     },
-//     {
-//         nombre: "Zulma",
-//         apellido: "Rodriguez",
-//         edad: 25,
-//         correo: "zulma@correo.com",
-//         pass: "AmoLaProgramacion"
-//     }
-// ]
+let BD = [{
+        nombre: "Hugo",
+        apellido: "Mendez",
+        edad: 85,
+        correo: "hugo@correo.com",
+        pass: "123456"
+    },
+    {
+        nombre: "Zulma",
+        apellido: "Rodriguez",
+        edad: 25,
+        correo: "zulma@correo.com",
+        pass: "AmoLaProgramacion"
+    }
+]
 
-// localStorage.setItem("dataBase", JSON.stringify(BD))
+localStorage.setItem("dataBase", JSON.stringify(BD))
 
-// let Data = localStorage.getItem("dataBase")
-// console.log(JSON.parse(Data))
+let Data = localStorage.getItem("dataBase")
+console.log(JSON.parse(Data))
 
 let botonIngreso = document.querySelector("#loginBtn")
 botonIngreso.addEventListener("click", () => {

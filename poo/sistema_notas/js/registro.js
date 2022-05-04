@@ -38,7 +38,10 @@ botonRegistro.addEventListener("click", () => {
                 correo: correo,
                 pass: pass
             }
-            classRegistro.registroUsuarioBD(dataRegistro)
+            let guardar = classRegistro.registroUsuarioBD(dataRegistro)
+            if (guardar) {
+                window.location.href = "index.html"
+            }
         }
 
     } else {

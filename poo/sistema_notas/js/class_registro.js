@@ -21,17 +21,34 @@ class Registro extends Login {
 
 
     registroUsuarioBD(data) {
-        let dataUsuarios = []
         let BDUsuarios = localStorage.getItem("dataBase")
         BDUsuarios = JSON.parse(BDUsuarios)
-        console.log(BDUsuarios)
-        dataUsuarios.push(BDUsuarios)
-        dataUsuarios.push(data)
-        localStorage.setItem("dataBase", JSON.stringify(dataUsuarios))
-
+        BDUsuarios.push(data)
+        localStorage.setItem("dataBase", JSON.stringify(BDUsuarios))
+        return true
     }
 
-
+    // registroUsuarioBD(data) {
+    //     let dataUsuarios = []
+    //     let BDUsuarios = localStorage.getItem("dataBase")
+    //     BDUsuarios = JSON.parse(BDUsuarios)
+    //     for (const usuario of BDUsuarios) {
+    //         dataUsuarios.push(usuario)
+    //         console.log(dataUsuarios)
+    //     }
+    //     dataUsuarios.push(data)
+    // }
 
 
 }
+/*
+operador spread
+let prueba = [1,5,9,7,8]
+
+console.log(prueba)
+(5) [1, 5, 9, 7, 8]
+
+console.log(...prueba)
+1 1 5 9 7 8
+
+*/

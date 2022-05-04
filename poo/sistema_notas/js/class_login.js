@@ -34,6 +34,7 @@ class Login {
         if (existe_user < BD.length) {
             if (BD[existe_user].pass == this.contrasena) {
                 login = true
+                sessionStorage.setItem("Usuario", existe_user)
             }
         }
 
@@ -48,6 +49,10 @@ class Login {
         }
 
         return login
+    }
+
+    logoutSesion() {
+        sessionStorage.removeItem("Usuario")
     }
 
 }

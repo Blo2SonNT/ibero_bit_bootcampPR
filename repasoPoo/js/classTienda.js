@@ -1,21 +1,25 @@
 class Tienda {
     nombreTienda = ''
+    resumenCompraUsuario = ''
     constructor() {}
 
     planBaseDatos() {
         let misProductos = [{
+                id: 1,
                 nombre: "Achiras El Paisa chimbo",
                 precio: 3000,
                 img: "url",
                 inventario: 99
             },
             {
+                id: 2,
                 nombre: "Uvas Pasas",
                 precio: 1500,
                 img: "url",
                 inventario: 4
             },
             {
+                id: 3,
                 nombre: "Vive 1000 - refrescate",
                 precio: 2000,
                 img: "url",
@@ -67,7 +71,7 @@ class Tienda {
         let BD = this.solicitarBaseDatos()
         console.log(BD)
         BD.forEach((producto, indiceProducto) => {
-            vistaProductos += this.vistaProducto(vista, producto.img, producto.nombre, producto.precio, indiceProducto)
+            vistaProductos += this.vistaProducto(vista, producto.img, producto.nombre, producto.precio, producto.id - 1)
 
         });
         return vistaProductos
@@ -95,6 +99,24 @@ class Tienda {
         localStorage.setItem("carrito", JSON.stringify(carrito))
     }
 
+    resumenCompra() {
+        this.resumenCompraUsuario = JSON.parse(localStorage.getItem('carrito'))
+        let vista = ``
+        this.resumenCompraUsuario.forEach((producto, indice) => {
+            vista += `
+                <tr>
+                    <td>${indice}</td>
+                    <td colspan="2">${producto.nombre} <br> ${producto.precio}</td>
+                    <td>CANTIDAD</td>
+                    <td>
+                        <button class="btn btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+            `
+        });
+        return vista
+    }
+
 
 }
 
@@ -114,3 +136,8 @@ setTimeout(() => {
         })
     });
 }, 1000);
+
+let btnCarrito = document.querySelector("#btnCarritoNav")
+btnCarrito.addEventListener("click", () => {
+    document.querySelector("#productosCarrito").innerHTML = tiendaClass.resumenCompra()
+})

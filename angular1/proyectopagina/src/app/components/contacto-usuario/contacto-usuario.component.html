@@ -1,1 +1,39 @@
-<p>contacto-usuario works!</p>
+<div class="container mt-5">
+    <form [formGroup]="contactoForm" (ngSubmit)="guardarContacto()" class="row g-3 mt-5">
+        <div class="col-6">
+            <label for="correoContacto" class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="correo">
+            <span class="text-danger fw-bold" *ngIf="contactoForm.get('correo')?.hasError('pattern')">Correo invalido</span>
+            <span class="text-danger fw-bold" *ngIf="contactoForm.get('correo')?.hasError('required') && contactoForm.get('correo')?.touched">Correo obligatorio</span>
+        </div>
+        <div class="col-6">
+            <label for="nombreContacto" class="form-label">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre">
+            <span class="text-danger fw-bold" *ngIf="contactoForm.get('nombre')?.hasError('required') && contactoForm.get('nombre')?.touched">Nombre invalido</span>
+        </div>
+        <div class="col-4">
+            <label for="direccionContacto" class="form-label">Direccion</label>
+            <input type="text" class="form-control" formControlName="direccion">
+            <span class="text-danger fw-bold" *ngIf="contactoForm.get('direccion')?.hasError('required') && contactoForm.get('direccion')?.touched">Dirección obligatoria</span>
+        </div>
+        <div class="col-4">
+            <label for="edadContacto" class="form-label">Edad</label>
+            <input type="text" class="form-control" formControlName="edad">
+            <span class="text-danger fw-bold" *ngIf="contactoForm.get('edad')?.hasError('pattern')">Edad invalida</span>
+            <span class="text-danger fw-bold" *ngIf="contactoForm.get('edad')?.hasError('required') && contactoForm.get('edad')?.touched">Edad obligatoria</span>
+        </div>
+        <div class="col-4">
+            <label for="CiudadContacto" class="form-label">Ciudad</label>
+            <input type="text" class="form-control" formControlName="ciudad">
+            <span class="text-danger fw-bold" *ngIf="contactoForm.get('ciudad')?.hasError('required') && contactoForm.get('ciudad')?.touched">Ciudad obligatoria</span>
+        </div>
+        <div class="col-12">
+            <label for="msnContacto" class="form-label">Su mensaje</label>
+            <textarea class="form-control" formControlName="mensaje" rows="3"></textarea>
+            <span class="text-danger fw-bold" *ngIf="contactoForm.get('mensaje')?.hasError('required') && contactoForm.get('mensaje')?.touched">Mensaje obligatoria</span>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+    </form>
+</div>

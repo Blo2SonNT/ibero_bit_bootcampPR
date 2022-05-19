@@ -13,7 +13,8 @@
         </div>
         <div class="col-4">
             <label for="direccionContacto" class="form-label">Direccion</label>
-            <input type="text" class="form-control" formControlName="direccion">
+            <input type="text" class="form-control" formControlName="direccion" minlength="5">
+            <span class="text-danger fw-bold" *ngIf="contactoForm.get('direccion')?.hasError('minlength') && contactoForm.get('direccion')?.touched">La cantidad de caracteres no es valida</span>
             <span class="text-danger fw-bold" *ngIf="contactoForm.get('direccion')?.hasError('required') && contactoForm.get('direccion')?.touched">Dirección obligatoria</span>
         </div>
         <div class="col-4">
@@ -33,7 +34,7 @@
             <span class="text-danger fw-bold" *ngIf="contactoForm.get('mensaje')?.hasError('required') && contactoForm.get('mensaje')?.touched">Mensaje obligatoria</span>
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" [disabled]="contactoForm.invalid" class="btn btn-primary">Enviar</button>
         </div>
     </form>
 </div>

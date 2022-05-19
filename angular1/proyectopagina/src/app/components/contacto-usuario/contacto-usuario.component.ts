@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Contacto } from 'src/app/models/contacto';
 @Component({
     selector: 'app-contacto-usuario',
     templateUrl: './contacto-usuario.component.html',
@@ -25,8 +26,18 @@ export class ContactoUsuarioComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    guardarContacto(){
-        console.log(this.contactoForm);
+    guardarContacto() {
+        //console.log(this.contactoForm);
+        const contactoUsuario: Contacto = {
+            correo: this.contactoForm.get('correo')?.value,
+            nombre: this.contactoForm.get('nombre')?.value,
+            direccion: this.contactoForm.get('direccion')?.value,
+            ciudad: this.contactoForm.get('ciudad')?.value,
+            mensaje: this.contactoForm.get('mensaje')?.value,
+            edad: this.contactoForm.get('edad')?.value
+        }
+        console.log(contactoUsuario)
     }
+
 
 }

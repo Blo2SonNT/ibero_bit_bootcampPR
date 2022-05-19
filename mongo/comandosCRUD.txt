@@ -1,0 +1,79 @@
+db.estudiantes.insertOne({
+    nombre:"freddy",
+    apellido: "perez",
+    edad:52,
+    correo:"freddy@correo.com"
+})
+
+db.estudiantes.insertMany([
+    {
+        nombre:"juan",
+        apellido: "lozano",
+        edad:12,
+        correo:"juan@pudin.com"
+    },
+    {
+        nombre:"oscar",
+        apellido: "zuluaga",
+        edad:98,
+        correo:"oscar98@correo.com"
+    },
+    {
+        nombre:"zulma",
+        apellido: "molina",
+        edad:105,
+        correo:"zulmita@correo.com"
+    }
+])
+
+
+db.estudiantes.insertOne({
+    nombrecito: 23,
+    apellido: {
+        letras: "P"
+    }, edad: "tiene 23 años"
+})
+
+bd.estudiantes.find()
+bd.estudiantes.find().pretty()
+
+
+db.estudiantes.updateOne(
+    { "_id":ObjectId("628585a37d78e7e5668d6d08") },
+    { $set: {edad:10, nombre:"lorena", horaLlegada: "7:00pm", hijos:[{
+        hijo1:{
+            nombre: "totetorpedo",
+            edad: 5
+        }, 
+        hijo2:{
+            nombre: "kevin",
+            edad: 15,
+            documento: "9461516",
+            tipo_doc: "TI"
+        }
+    }]
+
+} }
+)
+
+
+db.estudiantes.updateOne(
+    { "_id": ObjectId("628585a37d78e7e5668d6d06")},
+    { $set: {edad: 98} }
+)
+
+
+db.estudiantes.updateMany(
+    { edad: 98 },
+    { $set: {pensionado:true} }
+)
+
+
+db.estudiantes.deleteOne({
+    "_id":ObjectId("628585a37d78e7e5668d6d08")
+})
+
+db.estudiantes.deleteMany({ edad: 98 })
+
+
+

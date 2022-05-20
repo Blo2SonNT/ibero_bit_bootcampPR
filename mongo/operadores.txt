@@ -1,0 +1,66 @@
+$all ( Buscando valores contenidos en array del documento ) 		
+db.prueba1.find({ "correo": {$all:[""]} }).pretty()
+
+
+https://docs.mongodb.com/manual/reference/operator/query-comparison/
+
+$eq ( = )         	db.prueba1.find({ "edad": {$eq:24} }).pretty()
+
+$gt ( > )			db.prueba1.find({ "edad": {$gt:25} }).pretty()
+
+$gte ( >= )			db.prueba1.find({ "edad": {$gte:24} }).pretty()
+
+$lt ( < )			db.prueba1.find({ "edad": {$lt:25} }).pretty()
+
+$lte ( <= )			db.prueba1.find({ "edad": {$lte:24} }).pretty()	
+
+$ne ( != )			db.prueba1.find({ "edad": {$ne:24} }).pretty()
+
+$in ( Valores dentro de un arreglo )					
+db.prueba1.find({ "edad": {$in:[24,28]} }).pretty()
+
+$nin ( Valores que no están dentro de un arreglo )		
+db.prueba1.find({ "edad": {$nin:[24]} }).pretty()
+
+$and  ( Permite unir diferentes criterios que se deben cumplir )	
+db.prueba1.find({$and:[{ "edad":24 }, {"nombre": "Miguel"}]}).pretty()
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Busque todas las canciones que tengan a fulano y Axwell y que ademas de ello su orden de cancion sea menor igual a 34
+db.canciones.find({"autor":{"$in":["fulano", "Axwell"]}, $and:[{"ordenCancion": {"$lte": 34}}]}).pretty()
+
+Busque todas las canciones que no esten en el orden de cancion entre 1 y 8, ademas de ello el usuario no requiere el id
+db.canciones.find({"ordenCancion": {"$not":{"$gte":1, "$lte": 8}}}, {"_id":0}).pretty()
+
+Busque todas las canciones que no contengan a fulano ni axwell
+db.canciones.find({"autor":{"$nin":["fulano", "Axwell"]}}).pretty()
+
+busqueda en arrays
+db.canciones.find({"data_img": {$all:["PNG"]}}).pretty()
+
+Busqueda en arrays de objetos
+db.canciones.find({"data_img.formato": {$all:["PNG"]}}).pretty()
+
+Busque canciones que sean diferentes de On My Way
+db.canciones.find({"nombre": {$ne:"On My Way"}}).pretty()
+
+LIKE en mongoBD
+db.canciones.find({"nombre":/.*cancion*./i}).pretty()
+
+COUNT en mongoDB
+db.users.count({"tiene_hijos": true, "activo": true})
+
+
+VARIACION BUSQUEDA EN ARRAY CON LIKE
+db.prueba1.find({ "correo": {$all:[/.*migus*./i]} }).pretty()
+
+BUSQUEDA CON AND Y EXPRESIONES Y OTRAS CARACTERISTICAS
+db.estudiantes.find( 
+    {"nombre":{$in:[/.*ivis*./i, /.*albert*./i]}, $and:[{"edad": {$gte:20}}]}, 
+    {"_id":0,"documento":1, "nombre":1} 
+).pretty()

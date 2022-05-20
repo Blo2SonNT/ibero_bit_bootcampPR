@@ -1,0 +1,430 @@
+> use MundoAventura
+switched to db MundoAventura
+> db.atracciones.insertMany([
+... {  nombre: "acuario",
+...     accidentesDiarios: 10,
+...     presupuestoMantenimiento: 20000000
+... },
+... {  nombre: "block",
+...     accidentesDiarios: 5,
+...     presupuestoMantenimiento: 25000000
+... },
+... {  nombre: "carusel",
+...     accidentesDiarios: 30,
+...     presupuestoMantenimiento: 15000000
+... },
+... {  nombre: "Ikaro",
+...     accidentesDiarios: 120,
+...     presupuestoMantenimiento: 30000000
+... },
+... {  nombre: "dragon Fly",
+...     accidentesDiarios: 2,
+...     presupuestoMantenimiento: 9000000
+... },
+... {  nombre: "Mega Cesta",
+...     accidentesDiarios: 3,
+...     presupuestoMantenimiento: 5000000
+... },
+... {  nombre: "Montaña rusa",
+...     accidentesDiarios: 32,
+...     presupuestoMantenimiento: 19000000
+... },
+... {  nombre: "Paseo de Piratas",
+...     accidentesDiarios: 0,
+...     presupuestoMantenimiento: 3000000
+... },
+... {  nombre: "ranger",
+...     accidentesDiarios: 12,
+...     presupuestoMantenimiento: 22000000
+... },
+... {  nombre: "Sky Coaster",
+...     accidentesDiarios: 31,
+...     presupuestoMantenimiento: 41000000
+... },
+... {  nombre: "troncos",
+...     accidentesDiarios: 7,
+...     presupuestoMantenimiento: 4000000
+... },
+... {  nombre: "Vertical Swing",
+...     accidentesDiarios: 85,
+...     presupuestoMantenimiento: 11000000
+... }
+... ])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6286f45b5dcd73061707c1ec"),
+                ObjectId("6286f45b5dcd73061707c1ed"),
+                ObjectId("6286f45b5dcd73061707c1ee"),
+                ObjectId("6286f45b5dcd73061707c1ef"),
+                ObjectId("6286f45b5dcd73061707c1f0"),
+                ObjectId("6286f45b5dcd73061707c1f1"),
+                ObjectId("6286f45b5dcd73061707c1f2"),
+                ObjectId("6286f45b5dcd73061707c1f3"),
+                ObjectId("6286f45b5dcd73061707c1f4"),
+                ObjectId("6286f45b5dcd73061707c1f5"),
+                ObjectId("6286f45b5dcd73061707c1f6"),
+                ObjectId("6286f45b5dcd73061707c1f7")
+        ]
+}
+> db.atracciones.find({"accidentesDiarios":{$gt: 40, $lt: 100}}).pretty()
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f7"),
+        "nombre" : "Vertical Swing",
+        "accidentesDiarios" : 85,
+        "presupuestoMantenimiento" : 11000000
+}
+> db.atracciones.updateMany({"presupuestoMantenimiento":{$gte:25000000}},{$set:{prioridad:"Alta"}})
+{ "acknowledged" : true, "matchedCount" : 3, "modifiedCount" : 3 }
+> db.atracciones.find({"prioridad":"Alta"}).pretty()
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ed"),
+        "nombre" : "block",
+        "accidentesDiarios" : 5,
+        "presupuestoMantenimiento" : 25000000,
+        "prioridad" : "Alta"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ef"),
+        "nombre" : "Ikaro",
+        "accidentesDiarios" : 120,
+        "presupuestoMantenimiento" : 30000000,
+        "prioridad" : "Alta"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f5"),
+        "nombre" : "Sky Coaster",
+        "accidentesDiarios" : 31,
+        "presupuestoMantenimiento" : 41000000,
+        "prioridad" : "Alta"
+}
+> db.atracciones.updateMany({"presupuestoMantenimiento":{$lte:24999999}},{$set:{prioridad:"Baja"}})
+{ "acknowledged" : true, "matchedCount" : 9, "modifiedCount" : 9 }
+> db.atracciones.find({"prioridad":"Baja"}).pretty()
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ec"),
+        "nombre" : "acuario",
+        "accidentesDiarios" : 10,
+        "presupuestoMantenimiento" : 20000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ee"),
+        "nombre" : "carusel",
+        "accidentesDiarios" : 30,
+        "presupuestoMantenimiento" : 15000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f0"),
+        "nombre" : "dragon Fly",
+        "accidentesDiarios" : 2,
+        "presupuestoMantenimiento" : 9000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f1"),
+        "nombre" : "Mega Cesta",
+        "accidentesDiarios" : 3,
+        "presupuestoMantenimiento" : 5000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f2"),
+        "nombre" : "Montaña rusa",
+        "accidentesDiarios" : 32,
+        "presupuestoMantenimiento" : 19000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f3"),
+        "nombre" : "Paseo de Piratas",
+        "accidentesDiarios" : 0,
+        "presupuestoMantenimiento" : 3000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f4"),
+        "nombre" : "ranger",
+        "accidentesDiarios" : 12,
+        "presupuestoMantenimiento" : 22000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f6"),
+        "nombre" : "troncos",
+        "accidentesDiarios" : 7,
+        "presupuestoMantenimiento" : 4000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f7"),
+        "nombre" : "Vertical Swing",
+        "accidentesDiarios" : 85,
+        "presupuestoMantenimiento" : 11000000,
+        "prioridad" : "Baja"
+}
+> db.atracciones.updateOne({"accidentesDiarios":{$eq:0}},{$unset:{accidentesDiarios:0}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.atracciones.find({"accidentesDiarios":null}).pretty()
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f3"),
+        "nombre" : "Paseo de Piratas",
+        "presupuestoMantenimiento" : 3000000,
+        "prioridad" : "Baja"
+}
+> db.atracciones.updateMany({"prioridad":{$ne: "Baja"}, "accidentesDiarios":{$gt:100}},{$set:{prioridad:"Muy Alta"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.atracciones.find({"prioridad":"Muy Alta"}).pretty()
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ef"),
+        "nombre" : "Ikaro",
+        "accidentesDiarios" : 120,
+        "presupuestoMantenimiento" : 30000000,
+        "prioridad" : "Muy Alta"
+}
+> db.atracciones.find().pretty()
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ec"),
+        "nombre" : "acuario",
+        "accidentesDiarios" : 10,
+        "presupuestoMantenimiento" : 20000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ed"),
+        "nombre" : "block",
+        "accidentesDiarios" : 5,
+        "presupuestoMantenimiento" : 25000000,
+        "prioridad" : "Alta"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ee"),
+        "nombre" : "carusel",
+        "accidentesDiarios" : 30,
+        "presupuestoMantenimiento" : 15000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ef"),
+        "nombre" : "Ikaro",
+        "accidentesDiarios" : 120,
+        "presupuestoMantenimiento" : 30000000,
+        "prioridad" : "Muy Alta"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f0"),
+        "nombre" : "dragon Fly",
+        "accidentesDiarios" : 2,
+        "presupuestoMantenimiento" : 9000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f1"),
+        "nombre" : "Mega Cesta",
+        "accidentesDiarios" : 3,
+        "presupuestoMantenimiento" : 5000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f2"),
+        "nombre" : "Montaña rusa",
+        "accidentesDiarios" : 32,
+        "presupuestoMantenimiento" : 19000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f3"),
+        "nombre" : "Paseo de Piratas",
+        "presupuestoMantenimiento" : 3000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f4"),
+        "nombre" : "ranger",
+        "accidentesDiarios" : 12,
+        "presupuestoMantenimiento" : 22000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f5"),
+        "nombre" : "Sky Coaster",
+        "accidentesDiarios" : 31,
+        "presupuestoMantenimiento" : 41000000,
+        "prioridad" : "Alta"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f6"),
+        "nombre" : "troncos",
+        "accidentesDiarios" : 7,
+        "presupuestoMantenimiento" : 4000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f7"),
+        "nombre" : "Vertical Swing",
+        "accidentesDiarios" : 85,
+        "presupuestoMantenimiento" : 11000000,
+        "prioridad" : "Baja"
+}
+> db.atracciones.find({accidentesDiarios: 85}, {nombre: 1}).pretty()
+{ "_id" : ObjectId("6286f45b5dcd73061707c1f7"), "nombre" : "Vertical Swing" }
+> db.atracciones.find({accidentesDiarios: 85}, {nombre: 1, _id:0}).pretty()
+{ "nombre" : "Vertical Swing" }
+> db.atracciones.find({accidentesDiarios: {$gte:31}}, {nombre: 1, _id:0}).pretty()
+{ "nombre" : "Ikaro" }
+{ "nombre" : "Montaña rusa" }
+{ "nombre" : "Sky Coaster" }
+{ "nombre" : "Vertical Swing" }
+> db.atracciones.insertOne({nombre:"pepeFuny", usuario: {usuario1:"miguel", usuario2:"Sara", usuario3: "Oscar"}})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("6286f8ca5dcd73061707c1f8")
+}
+> db.atracciones.find({nombre: "pepeFuny"}).pretty()
+{
+        "_id" : ObjectId("6286f8ca5dcd73061707c1f8"),
+        "nombre" : "pepeFuny",
+        "usuario" : {
+                "usuario1" : "miguel",
+                "usuario2" : "Sara",
+                "usuario3" : "Oscar"
+        }
+}
+> db.atracciones.updateOne({nombre:"pepeFuny"}, {$set:{"usuario.usuario2":"Zulma"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.atracciones.find({nombre: "pepeFuny"}).pretty()
+{
+        "_id" : ObjectId("6286f8ca5dcd73061707c1f8"),
+        "nombre" : "pepeFuny",
+        "usuario" : {
+                "usuario1" : "miguel",
+                "usuario2" : "Zulma",
+                "usuario3" : "Oscar"
+        }
+}
+> db.atracciones.find().pretty()
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ec"),
+        "nombre" : "acuario",
+        "accidentesDiarios" : 10,
+        "presupuestoMantenimiento" : 20000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ed"),
+        "nombre" : "block",
+        "accidentesDiarios" : 5,
+        "presupuestoMantenimiento" : 25000000,
+        "prioridad" : "Alta"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ee"),
+        "nombre" : "carusel",
+        "accidentesDiarios" : 30,
+        "presupuestoMantenimiento" : 15000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1ef"),
+        "nombre" : "Ikaro",
+        "accidentesDiarios" : 120,
+        "presupuestoMantenimiento" : 30000000,
+        "prioridad" : "Muy Alta"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f0"),
+        "nombre" : "dragon Fly",
+        "accidentesDiarios" : 2,
+        "presupuestoMantenimiento" : 9000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f1"),
+        "nombre" : "Mega Cesta",
+        "accidentesDiarios" : 3,
+        "presupuestoMantenimiento" : 5000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f2"),
+        "nombre" : "Montaña rusa",
+        "accidentesDiarios" : 32,
+        "presupuestoMantenimiento" : 19000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f3"),
+        "nombre" : "Paseo de Piratas",
+        "presupuestoMantenimiento" : 3000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f4"),
+        "nombre" : "ranger",
+        "accidentesDiarios" : 12,
+        "presupuestoMantenimiento" : 22000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f5"),
+        "nombre" : "Sky Coaster",
+        "accidentesDiarios" : 31,
+        "presupuestoMantenimiento" : 41000000,
+        "prioridad" : "Alta"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f6"),
+        "nombre" : "troncos",
+        "accidentesDiarios" : 7,
+        "presupuestoMantenimiento" : 4000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f7"),
+        "nombre" : "Vertical Swing",
+        "accidentesDiarios" : 85,
+        "presupuestoMantenimiento" : 11000000,
+        "prioridad" : "Baja"
+}
+{
+        "_id" : ObjectId("6286f8ca5dcd73061707c1f8"),
+        "nombre" : "pepeFuny",
+        "usuario" : {
+                "usuario1" : "miguel",
+                "usuario2" : "Zulma",
+                "usuario3" : "Oscar"
+        }
+}
+> db.atracciones.find({"nombre":/.*ratas*./i}).pretty()
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f3"),
+        "nombre" : "Paseo de Piratas",
+        "presupuestoMantenimiento" : 3000000,
+        "prioridad" : "Baja"
+}
+> db.atracciones.find({"nombre":/.*RATAS*./}).pretty()
+> db.atracciones.find({"nombre":/.*RATAS*./i}).pretty()
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f3"),
+        "nombre" : "Paseo de Piratas",
+        "presupuestoMantenimiento" : 3000000,
+        "prioridad" : "Baja"
+}
+> db.atracciones.count({"nombre": "Paseo de Piratas"})
+1
+> db.atracciones.updateOne({"nombre":/.*ratas*./i}, {$unset:{prioridad:1}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.atracciones.find({"nombre":/.*RATAS*./i}).pretty()
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f3"),
+        "nombre" : "Paseo de Piratas",
+        "presupuestoMantenimiento" : 3000000
+}
+> db.atracciones.updateOne({"nombre":/.*ratas*./i}, {$unset:{presupuestoMantenimiento:true}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.atracciones.find({"nombre":/.*RATAS*./i}).pretty()
+{
+        "_id" : ObjectId("6286f45b5dcd73061707c1f3"),
+        "nombre" : "Paseo de Piratas"
+}

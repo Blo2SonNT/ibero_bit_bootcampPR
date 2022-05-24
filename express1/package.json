@@ -1,0 +1,24 @@
+{
+    "name": "formulariocontactoback",
+    "version": "1.0.0",
+    "description": "este proyecto esta enfocado a recibir los contactos de mis usuarios",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon ."
+    },
+    "keywords": [
+        "contacto",
+        "api",
+        "bit"
+    ],
+    "author": "Miguel Nieto BIT",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.16"
+    },
+    "dependencies": {
+        "dotenv": "^16.0.1",
+        "express": "^4.18.1",
+        "mongoose": "^6.3.4"
+    }
+}

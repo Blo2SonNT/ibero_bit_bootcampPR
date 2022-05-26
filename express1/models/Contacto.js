@@ -2,29 +2,33 @@ const mongoose = require('mongoose')
 
 const contactoSchema = mongoose.Schema({
     correo: {
-        type: string,
+        type: String,
         required: true
     },
     nombre: {
-        type: string,
+        type: String,
         required: true
     },
     direccion: {
-        type: string,
+        type: String,
         required: true
     },
     ciudad: {
-        type: string,
+        type: String,
         required: true
     },
     mensaje: {
-        type: string,
+        type: String,
         required: true
     },
     edad: {
-        type: number,
+        type: Number,
         required: true
     },
+    fec_cre: {
+        type: Date,
+        default: Date.now()
+    }
 })
 
 module.exports = mongoose.model("contacto", contactoSchema)

@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NoExisteComponent } from './components/no-existe/no-existe.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EnvioDataComponent } from './components/envio-data/envio-data.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
         NavbarComponent,
         FooterComponent,
         DashboardComponent,
-        NoExisteComponent
+        NoExisteComponent,
+        EnvioDataComponent
     ],
     imports: [
         BrowserModule,

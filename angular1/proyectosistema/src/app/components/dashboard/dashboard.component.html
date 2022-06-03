@@ -25,7 +25,7 @@
                 <td>{{ contacto.edad }}</td>
                 <td colspan="2">
                     <i class="fas fa-pen"></i>
-                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-trash" (click)="eliminarContacto(contacto._id)"></i>
                 </td>
             </tr>
         </tbody>

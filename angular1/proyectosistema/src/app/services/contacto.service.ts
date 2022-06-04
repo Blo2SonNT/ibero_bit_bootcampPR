@@ -16,13 +16,17 @@ export class ContactoService {
         return this.http.get(`${this.url_api}/obtener-lista-contactos`)
     }
 
-    getContacto(){}
+    getContacto(id:String): Observable<any>{
+        return this.http.get(`${this.url_api}/obtener-contacto/${id}`)
+    }
 
     postContacto(contactoFormulario: Contacto):Observable<any>{
         return this.http.post(`${this.url_api}/crear-contacto`, contactoFormulario)
     }
 
-    putContacto(){}
+    putContacto(id:any, contactoFormulario: Contacto): Observable<any>{
+        return this.http.put(`${this.url_api}/actualizar-contacto/${id}`, contactoFormulario)
+    }
 
     deleteContacto(id:String):Observable<any>{
         return this.http.delete(`${this.url_api}/borrar-contacto/${id}`)

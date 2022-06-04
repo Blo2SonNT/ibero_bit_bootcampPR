@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Contacto } from 'src/app/models/contacto';
 import { ContactoService } from 'src/app/services/contacto.service';
-
+import Swal from 'sweetalert2';
 @Component({
     selector: 'app-inicio',
     templateUrl: './inicio.component.html',
@@ -14,8 +14,15 @@ export class InicioComponent implements OnInit {
     contactoForm: FormGroup;
     regexCorreo = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
     regexNumero = /^[0-9]+$/;
+    id: string | null;
+    titulo_formulario = "Enviar mensaje"
 
-    constructor(private fb: FormBuilder, private _contactoService: ContactoService, private router: Router) {
+    constructor(
+        private fb: FormBuilder,
+        private _contactoService: ContactoService,
+        private router: Router,
+        private idRoute: ActivatedRoute
+        ) {
         this.contactoForm = this.fb.group({
             correo: ['', [Validators.required, Validators.pattern(this.regexCorreo)]],
             nombre: ['', Validators.required],
@@ -24,9 +31,11 @@ export class InicioComponent implements OnInit {
             ciudad: ['', [Validators.required]],
             mensaje: ['', [Validators.required]]
         })
+        this.id = this.idRoute.snapshot.paramMap.get('id')
     }
 
     ngOnInit(): void {
+        this.accionSolicitada();
     }
 
     guardarContacto(){
@@ -40,12 +49,43 @@ export class InicioComponent implements OnInit {
         }
         console.log(contactoUsuario)
 
-        this._contactoService.postContacto(contactoUsuario).subscribe(data=>{
-            this.router.navigate(['/mensaje-enviado'])
-        }, error => {
-            console.log(error)
-        })
+        if(this.id !== null){
+            this._contactoService.putContacto(this.id, contactoUsuario).subscribe(data=>{
+                this.router.navigate(['admin'])
+                Swal.fire({
+					title: 'Producto actualizado!',
+					text: 'Se guardaron los cambios en el producto',
+					icon: 'success',
+					confirmButtonText: 'Vale'
+				})
+            }, error=>{})
+        }else{
+            this._contactoService.postContacto(contactoUsuario).subscribe(data=>{
+                this.router.navigate(['/mensaje-enviado'])
+            }, error => {
+                console.log(error)
+            })
+        }
 
+    }
+
+
+    accionSolicitada(){
+        if(this.id !== null){
+            this.titulo_formulario = "Actualizar mensaje"
+            this._contactoService.getContacto(this.id).subscribe(data=>{
+                this.contactoForm.setValue({
+                    correo: data.correo,
+                    nombre: data.nombre,
+                    direccion: data.direccion,
+                    ciudad: data.ciudad,
+                    mensaje: data.mensaje,
+                    edad: data.edad
+                })
+            }, error=>{
+                console.log(error)
+            })
+        }
     }
 
 }

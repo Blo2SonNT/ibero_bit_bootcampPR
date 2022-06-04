@@ -10,6 +10,7 @@ const routes: Routes = [
     {path: 'admin', component: DashboardComponent},
     {path: '404', component: NoExisteComponent},
     {path: 'mensaje-enviado', component: EnvioDataComponent},
+    {path: 'editar-contacto/:id', component: InicioComponent},
     {path:'**', redirectTo: '404', pathMatch: 'full'}
 ];
 

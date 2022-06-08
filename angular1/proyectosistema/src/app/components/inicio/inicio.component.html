@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar titulo_nav="pepe"></app-navbar>
 
 <div class="container">
     <h1>Bienvenido</h1>
@@ -52,6 +52,9 @@
             </div>
         </form>
     </div>
+
+    <img #imagen class="w-25" src="assets/img/papas1.png" alt="">
+    <button #boton (click)="cambio()" class="btn btn-dark">Quiero papas</button>
 
 </div>
 

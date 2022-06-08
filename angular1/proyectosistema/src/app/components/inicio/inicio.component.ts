@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contacto } from 'src/app/models/contacto';
@@ -11,6 +11,11 @@ import Swal from 'sweetalert2';
 })
 export class InicioComponent implements OnInit {
 
+
+    @ViewChild('imagen') imagenHTML?: ElementRef
+    @ViewChild('boton') botonHTML?: ElementRef
+
+
     contactoForm: FormGroup;
     regexCorreo = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
     regexNumero = /^[0-9]+$/;
@@ -21,7 +26,8 @@ export class InicioComponent implements OnInit {
         private fb: FormBuilder,
         private _contactoService: ContactoService,
         private router: Router,
-        private idRoute: ActivatedRoute
+        private idRoute: ActivatedRoute,
+        private renderer2: Renderer2
         ) {
         this.contactoForm = this.fb.group({
             correo: ['', [Validators.required, Validators.pattern(this.regexCorreo)]],
@@ -86,6 +92,15 @@ export class InicioComponent implements OnInit {
                 console.log(error)
             })
         }
+    }
+
+
+    cambio(){
+        const imagenPapas = this.imagenHTML?.nativeElement
+        // this.renderer2.setAttribute(imagenPapas, 'src', 'assets/img/papas2.png')
+        this.renderer2.addClass(imagenPapas, "border")
+        this.renderer2.addClass(imagenPapas, "border-primary")
+        console.log(imagenPapas)
     }
 
 }
